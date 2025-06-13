@@ -45,3 +45,12 @@ print("hello")
 # AND (and): returns True if both conditions are true.
 # OR (or): returns True if at least one of the conditions is true.
 # NOT (not): inverts the value of a condition, returns True if the condition is false and False if the condition is true.
+
+
+if (2 >3):
+    print("not a chance")
+elif ("num" == "num"):
+    print("nice")
+else:
+    print("yeah")
+
