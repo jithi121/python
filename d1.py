@@ -47,10 +47,19 @@ print("hello")
 # NOT (not): inverts the value of a condition, returns True if the condition is false and False if the condition is true.
 
 
-if (2 >3):
-    print("not a chance")
-elif ("num" == "num"):
-    print("nice")
-else:
-    print("yeah")
+# if (2 >3):
+#     print("not a chance")
+# elif ("num" == "num"):
+#     print("nice")
+# else:
+#     print("yeah")
 
+items = ["a","b","C"]
+for i in items:
+    print(i)
+
+i = 0
+while i < 3:
+    print("yo")
+    i = i+1  
+    break
