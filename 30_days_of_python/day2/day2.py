@@ -13,4 +13,11 @@ is_true = '0'
 is_light_on = '1'
 a,b,c = 1,2,3
 
+print(type(is_true))
 
+print(len(first_name))
+
+(len(first_name))
+
+num_one = 5;
+num_two = 4;
