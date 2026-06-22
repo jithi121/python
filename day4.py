@@ -1,6 +1,10 @@
+import os
 
+profile_list = [];
 
-main_menu = int(input("""Welcome to the Profile Creator! 
+while True:
+    
+    main_menu = int(input("""Welcome to the Profile Creator! 
                   
                   Please select an option:
                   
@@ -9,27 +13,44 @@ main_menu = int(input("""Welcome to the Profile Creator!
                   3 : Exit"""))
 
 
-match main_menu:
-    case 3:
-        print('shutting down, till next time')
-        exit()
-    case 1:
-        print("1 up")
-        name = input('Please enter your name: ')
-        age = int(input('Please enter your age: '))
-        if age<18:
-            age_group = 'minor'
-        else:
-            age_group = 'adult'
+    match main_menu:
+        case 3:
+            print('shutting down, till next time')
+            exit()
 
-        fav_tool = input('Please enter your favorite tool: ')
 
-        name = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group}
-        print(name)
+        case 1:
+            print("1 up")
+            name = input('Please enter your name: ')
+            os.system('cls')
 
-        profile_list = [];
-        profile_list.append(name)
-        print(profile_list)
+
+            os.system('clear')
+            age = int(input('Please enter your age: '))
+            os.system('cls')
+
+
+            if age<18:
+                age_group = 'minor'
+            else:
+                age_group = 'adult'
+
+            fav_tool = input('Please enter your favorite tool: ')
+            os.system('cls')
+
+
+
+            names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group}
+            # print(name)
+
+            profile_list.append(names)
+            # print(profile_list)
+
+        case 2:
+            print("Profile list")
+            # print(profile_list)
+            for list in profile_list: 
+                print(list)
 
 
 
