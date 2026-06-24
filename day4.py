@@ -1,6 +1,6 @@
 import os
 import json
-
+import time
 
 profile_list = [];
 
@@ -62,7 +62,14 @@ while True:
                 print(f.read())
 
         case _:
+            os.system('cls')
             print('try again, incorrect format detected.')
+            
+            
+            for i in range(3):
+                print(f'returning back in 3 seconds')
+                time.sleep(3)
+                os.system('cls')
 
 
 
