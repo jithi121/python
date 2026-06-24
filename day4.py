@@ -1,9 +1,12 @@
 import os
+import json
+
 
 profile_list = [];
 
 while True:
     
+
     main_menu = int(input("""Welcome to the Profile Creator! 
                   
                   Please select an option:
@@ -25,7 +28,7 @@ while True:
             os.system('cls')
 
 
-            os.system('clear')
+
             age = int(input('Please enter your age: '))
             os.system('cls')
 
@@ -44,13 +47,22 @@ while True:
             # print(name)
 
             profile_list.append(names)
-            # print(profile_list)
+
+            temp_file = json.dumps(profile_list)
+            print(type(temp_file))
+            with open("profile.txt","a") as f:
+                f.write(temp_file)
+
+
 
         case 2:
             print("Profile list")
             # print(profile_list)
-            for list in profile_list: 
-                print(list)
+            with open("profile.txt") as f:
+                print(f.read())
+
+        case _:
+            print('try again, incorrect format detected.')
 
 
 
