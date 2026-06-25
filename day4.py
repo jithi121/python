@@ -6,24 +6,24 @@ profile_list = [];
 
 while True:
     
-
-    main_menu = int(input("""Welcome to the Profile Creator! 
+    #Main landing page with options
+    Landing_page = int(input("""Welcome to the Profile Creator! 
                   
                   Please select an option:
                   
                   1 : Create a new profile
                   2 : show all users in a profile
-                  3 : Exit"""))
+                  3 : Exit \n\n"""))
 
 
-    match main_menu:
+    match Landing_page:
         case 3:
+            #Exit command from application. Shutsdown
             print('shutting down, till next time')
             exit()
 
 
         case 1:
-            print("1 up")
             name = input('Please enter your name: ')
             os.system('cls')
 
