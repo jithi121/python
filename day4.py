@@ -1,3 +1,13 @@
+# Since we're treating this like a real software project, I'd like you to use commits that fall into categories like:
+
+# feat: → New feature
+# fix: → Bug fix
+# refactor: → Code restructuring (no new functionality)
+# docs: → Documentation changes
+# style: → Formatting/readability only
+# test: → Tests added or updated
+# chore: → Maintenance tasks
+
 import os
 import json
 import time
