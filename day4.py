@@ -4,11 +4,53 @@ import time
 
 profile_list = [];
 
+def exit_menu():
+    print('shutting down, till next time')
+    exit()    
+
+def insert_details():
+    name = input('Please enter your name: ')
+    os.system('cls')
+
+
+
+    age = int(input('Please enter your age: '))
+    os.system('cls')
+
+
+    if age<18:
+        age_group = 'minor'
+    else:
+        age_group = 'adult'
+
+        fav_tool = input('Please enter your favorite tool: ')
+        os.system('cls')
+
+
+
+        names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group}
+        
+        profile_list.append(names)
+
+        temp_file = json.dumps(profile_list)
+        print(type(temp_file))
+        with open("profile.txt","a") as f:
+            f.write(temp_file)
+
+
+def Read_file():
+    print("Profile list")
+    with open("profile.txt") as f:
+        print(f.read())
+
+
+
 def land_page():
     while True:
         
         try:
         #Main landing page with options
+            
             Landing_page = int(input("""Welcome to the Profile Creator! 
                         
                         Please select an option:
@@ -28,47 +70,14 @@ def land_page():
                     
                     case 3:
                         #Exit command from application. Shutsdown
-                        print('shutting down, till next time')
-                        exit()
+                        exit_menu()
 
 
                     case 1:
-                        name = input('Please enter your name: ')
-                        os.system('cls')
-
-
-
-                        age = int(input('Please enter your age: '))
-                        os.system('cls')
-
-
-                        if age<18:
-                            age_group = 'minor'
-                        else:
-                            age_group = 'adult'
-
-                        fav_tool = input('Please enter your favorite tool: ')
-                        os.system('cls')
-
-
-
-                        names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group}
-                        # print(name)
-
-                        profile_list.append(names)
-
-                        temp_file = json.dumps(profile_list)
-                        print(type(temp_file))
-                        with open("profile.txt","a") as f:
-                            f.write(temp_file)
-
-
+                       insert_details()
 
                     case 2:
-                        print("Profile list")
-                        # print(profile_list)
-                        with open("profile.txt") as f:
-                            print(f.read())
+                        Read_file()
 
                     case _:
                         os.system('cls')
@@ -85,8 +94,6 @@ def land_page():
                 print("try numbers, perhaps!")
 
 land_page()
-    
-
 
 
 
