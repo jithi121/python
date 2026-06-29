@@ -23,19 +23,19 @@ def insert_details():
     else:
         age_group = 'adult'
 
-        fav_tool = input('Please enter your favorite tool: ')
-        os.system('cls')
+    fav_tool = input('Please enter your favorite tool: ')
+    os.system('cls')
 
 
 
-        names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group}
-        
-        profile_list.append(names)
+    names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group}
+    
+    profile_list.append(names)
 
-        temp_file = json.dumps(profile_list)
-        print(type(temp_file))
-        with open("profile.txt","a") as f:
-            f.write(temp_file)
+    temp_file = json.dumps(profile_list)
+    # print(type(temp_file))
+    with open("profile.txt","a") as f:
+        f.write(temp_file)
 
 
 def Read_file():
@@ -66,19 +66,14 @@ def land_page():
 
 
                 match Landing_page:
-
-                    
-                    case 3:
-                        #Exit command from application. Shutsdown
-                        exit_menu()
-
-
+                   
                     case 1:
                        insert_details()
-
                     case 2:
                         Read_file()
-
+                    case 3:
+                    #Exit command from application. Shutsdown
+                      exit_menu()    
                     case _:
                         os.system('cls')
                         print('try again, incorrect option detected. returning back in 3 secs')
@@ -92,6 +87,7 @@ def land_page():
                             os.system('cls')
             else:
                 print("try numbers, perhaps!")
+
 
 land_page()
 
