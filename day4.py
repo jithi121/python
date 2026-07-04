@@ -8,25 +8,28 @@
 # test: → Tests added or updated
 # chore: → Maintenance tasks
 
+# persistence first (load/save properly, single source of truth)
+# validation next (stop bad data entering the system)
+# cleanup last (refactor structure once behaviour is stable)
+
 import os
 import json
 import time
 
-profile_list = [];
 
 def exit_menu():
     print('shutting down, till next time')
     exit()    
 
 def insert_details():
+
+    profile_list = []
+
     name = input('Please enter your name: ')
     os.system('cls')
 
-
-
     age = int(input('Please enter your age: '))
     os.system('cls')
-
 
     if age<18:
         age_group = 'minor'
@@ -35,8 +38,6 @@ def insert_details():
 
     fav_tool = input('Please enter your favorite tool: ')
     os.system('cls')
-
-
 
     names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group}
     
@@ -56,6 +57,20 @@ def Read_file():
 
 
 def land_page():
+
+    file_path = './profile.txt'
+    
+    if os.path.exists(file_path):
+        print('exist, no need for fresh array')
+
+    else:
+        print('new list created')
+        f = open("profile.txt", "x")
+        # global profile_list
+        # profile_list = [];
+
+
+
     while True:
         
         try:
@@ -65,8 +80,8 @@ def land_page():
                         
                         Please select an option:
                         
-                        1 : Create a new profile
-                        2 : show all users in a profile
+                        1 : Create a new user
+                        2 : show all users in profile
                         3 : Exit \n\n"""))
         except ValueError:
             print("Almost there, try a number from the menu!")
