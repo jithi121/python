@@ -15,15 +15,14 @@
 import os
 import json
 import time
+import pyinputplus
 
 
 def exit_menu():
     print('shutting down, till next time')
     exit()    
 
-def insert_details():
-
-    profile_list = []
+def insert_details(profile_list):
 
     name = input('Please enter your name: ')
     os.system('cls')
@@ -41,7 +40,7 @@ def insert_details():
 
     names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group}
     
-    profile_list.append(names)
+    profile_list.write(names)
 
     temp_file = json.dumps(profile_list)
     # print(type(temp_file))
@@ -49,7 +48,8 @@ def insert_details():
         f.write(temp_file)
 
 
-def Read_file():
+def Read_file(profile_list):
+    os.system('cls')
     print("Profile list")
     with open("profile.txt") as f:
         print(f.read())
@@ -59,13 +59,16 @@ def Read_file():
 def land_page():
 
     file_path = './profile.txt'
-    
+    print('hi')
     if os.path.exists(file_path):
         print('exist, no need for fresh array')
+        profile_list = open("profile.txt", "w")
+        print(type(profile_list))
+
 
     else:
         print('new list created')
-        f = open("profile.txt", "x")
+        profile_list = open("profile.txt", "x")
         # global profile_list
         # profile_list = [];
 
@@ -75,6 +78,7 @@ def land_page():
         
         try:
         #Main landing page with options
+            
             
             Landing_page = int(input("""Welcome to the Profile Creator! 
                         
@@ -93,9 +97,9 @@ def land_page():
                 match Landing_page:
                    
                     case 1:
-                       insert_details()
+                       insert_details(profile_list)
                     case 2:
-                        Read_file()
+                        Read_file(profile_list)
                     case 3:
                     #Exit command from application. Shutsdown
                       exit_menu()    
