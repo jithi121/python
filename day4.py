@@ -22,7 +22,7 @@ def exit_menu():
     print('shutting down, till next time')
     exit()    
 
-def insert_details(profile_list):
+def insert_details(local_file):
 
     name = input('Please enter your name: ')
     os.system('cls')
@@ -40,15 +40,29 @@ def insert_details(profile_list):
 
     names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group}
     
-    profile_list.write(names)
-
-    temp_file = json.dumps(profile_list)
-    # print(type(temp_file))
-    with open("profile.txt","a") as f:
-        f.write(temp_file)
+    Json_temp_string = json.dumps(names)
 
 
-def Read_file(profile_list):
+
+    local_file.write(Json_temp_string)
+
+    print(local_file, 'profile list')
+
+    with open("profile.txt","w") as f:
+        f.write(local_file)
+
+    # temp_file = json.dumps(profile_list)
+    # # print(type(temp_file))
+    # 
+# learned about TextIOWrapper 
+# how to convert to JSON
+# how to open, read, write and append to file 
+# function calls 
+# importing JSON, converting to JSON
+#  
+
+
+def Read_file(local_file):
     os.system('cls')
     print("Profile list")
     with open("profile.txt") as f:
@@ -62,13 +76,21 @@ def land_page():
     print('hi')
     if os.path.exists(file_path):
         print('exist, no need for fresh array')
-        profile_list = open("profile.txt", "w")
-        print(type(profile_list))
+        local_file = open("profile.txt", "r")
+        if not local_file:
+            local_file.append
+        
+        data = json.load(local_file)
+
+
+        print(type(local_file))
+        print(data)
+
 
 
     else:
         print('new list created')
-        profile_list = open("profile.txt", "x")
+        local_file = open("profile.txt", "x")
         # global profile_list
         # profile_list = [];
 
@@ -97,9 +119,9 @@ def land_page():
                 match Landing_page:
                    
                     case 1:
-                       insert_details(profile_list)
+                       insert_details(local_file)
                     case 2:
-                        Read_file(profile_list)
+                        Read_file(local_file)
                     case 3:
                     #Exit command from application. Shutsdown
                       exit_menu()    
