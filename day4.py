@@ -90,9 +90,15 @@ def land_page():
 
     else:
         print('new list created')
-        local_file = open("profile.txt", "x")
+        local_file = open("profile.txt", "a")
+
         initial_list = [];
-        json.dumps(initial_list, local_file)
+        local_file.write(initial_list)
+        print(initial_list)
+        
+
+
+
         # global profile_list
         # profile_list = [];
         print()
@@ -132,15 +138,16 @@ def land_page():
                         os.system('cls')
                         print('try again, incorrect option detected. returning back in 3 secs')
                         
-                        i = 3
-                        while i>0:
+            #             i = 3
+            #             while i>0:
 
-                            print('returning back in ' + str(i) + ' seconds')
-                            i = i-1 
-                            # time.sleep(3)
-                            os.system('cls')
-            else:
-                print("try numbers, perhaps!")
+            #                 print('returning back in ' + str(i) + ' seconds')
+            #                 i = i-1 
+            #                 # time.sleep(3)
+            #                 os.system('cls')
+            # else:
+            #     print("try numbers, perhaps!") 
+            # totally unnecessary, did to impress u
 
 
 land_page()
