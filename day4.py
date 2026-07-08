@@ -62,7 +62,7 @@ def insert_details(local_file):
 #  
 
 
-def Read_file(local_file):
+def read_file(local_file):
     os.system('cls')
     print("Profile list")
     with open("profile.txt") as f:
@@ -91,8 +91,11 @@ def land_page():
     else:
         print('new list created')
         local_file = open("profile.txt", "x")
+        initial_list = [];
+        json.dumps(initial_list, local_file)
         # global profile_list
         # profile_list = [];
+        print()
 
 
 
@@ -102,7 +105,7 @@ def land_page():
         #Main landing page with options
             
             
-            Landing_page = int(input("""Welcome to the Profile Creator! 
+            landing_page = int(input("""Welcome to the Profile Creator! 
                         
                         Please select an option:
                         
@@ -113,15 +116,15 @@ def land_page():
             print("Almost there, try a number from the menu!")
             
         else:
-            if type(Landing_page) is int:
+            if type(landing_page) is int:
 
 
-                match Landing_page:
+                match landing_page:
                    
                     case 1:
                        insert_details(local_file)
                     case 2:
-                        Read_file(local_file)
+                        read_file(local_file)
                     case 3:
                     #Exit command from application. Shutsdown
                       exit_menu()    
