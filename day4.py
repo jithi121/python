@@ -9,7 +9,7 @@
 # chore: → Maintenance tasks
 
 # persistence first (load/save properly, single source of truth)
-# validation next (stop bad data entering the system)
+# validation next (stop bad mem_data entering the system)
 # cleanup last (refactor structure once behaviour is stable)
 
 import os
@@ -18,11 +18,12 @@ import time
 
 
 def exit_menu():
+                                                                                    # takes care of exiting program
     print('shutting down, till next time')
     exit()    
 
-def insert_details(data):
-
+def insert_details(mem_data):
+                                                                                    # takes care of insert operations  
     name = input('Please enter your name: ')
     os.system('cls')
 
@@ -38,58 +39,57 @@ def insert_details(data):
     os.system('cls')
 
     names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group}
-    data.append(names)    
-    print(data)
+    mem_data.append(names)    
+    print(mem_data)
     print('worked until here' )
 
     with open("profile.txt","w") as f:
-        json.dump(data,f)
+        json.dump(mem_data,f)
 
-# learned about TextIOWrapper 
-# how to convert to JSON
-# how to open, read, write and append to file 
-# function calls 
-# importing JSON, converting to JSON
-# converting list to txt file and back  
+                                                                                    # learned about TextIOWrapper 
+                                                                                    # how to convert to JSON
+                                                                                    # how to open, read, write and append to file 
+                                                                                    # function calls 
+                                                                                    # importing JSON, converting to JSON
+                                                                                    # converting list to txt file and back  
 
 
-def read_file(data):
+def read_file(mem_data):                                                                
     os.system('cls')
-    print(data)
+    print(mem_data)
     with open("profile.txt") as f:
         print(f.read())
-
-
+                                                                                    # take care of print database
 
 def land_page():
-
-    data = []
+                                                                                    # landing page 
+    mem_data = []
 
     file_path = './profile.txt'
 
     if os.path.exists(file_path):
 
         print('exist, no need for fresh array')
-        local_file = open("profile.txt", "r")
+        data_base = open("profile.txt", "r")
 
-        if not local_file:
+        if not data_base:
             initial_list = [];
-            local_file.write(initial_list)
+            data_base.write(initial_list)
         
-            data = json.load(local_file)
+            mem_data = json.load(data_base)
             print('file has been loaded')
             
 
     else:
         print('new list created')
-        local_file = open("profile.txt", "a")
-        data = json.load(local_file)
-        return data
+        data_base = open("profile.txt", "a")
+        mem_data = json.load(data_base)
+        return mem_data
 
     while True:
         
         try:            
-            
+                                                                                        # user input screen
             landing_page = int(input("""Welcome to the Profile Creator! 
                         
                         Please select an option:
@@ -106,9 +106,9 @@ def land_page():
                 match landing_page:
                    
                     case 1:
-                       insert_details(data)
+                       insert_details(mem_data)
                     case 2:
-                        read_file(data)
+                        read_file(mem_data)
                     case 3:
                       exit_menu()    
                     case _:
