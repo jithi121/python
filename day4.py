@@ -22,7 +22,7 @@ def exit_menu():
     print('shutting down, till next time')
     exit()    
 
-def insert_details(local_file):
+def insert_details(data):
 
     name = input('Please enter your name: ')
     os.system('cls')
@@ -39,18 +39,17 @@ def insert_details(local_file):
     os.system('cls')
 
     names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group}
-    
-    Json_temp_string = json.dumps(names)
+    data.append(names)    
+    # Json_temp_string = json.dumps(names)
+    print(data)
+    print('worked until here' )
 
+    # local_file.write(Json_temp_string)
 
-
-    local_file.write(Json_temp_string)
-
-    print(local_file, 'profile list')
+    # print(local_file, 'profile list')
 
     with open("profile.txt","w") as f:
-        f.write(local_file)
-
+        json.dump(data,f)
     # temp_file = json.dumps(profile_list)
     # # print(type(temp_file))
     # 
@@ -62,15 +61,17 @@ def insert_details(local_file):
 #  
 
 
-def read_file(local_file):
+def read_file(data):
     os.system('cls')
-    print("Profile list")
+    print(data)
     with open("profile.txt") as f:
         print(f.read())
 
 
 
 def land_page():
+
+    data = []
 
     file_path = './profile.txt'
 
@@ -85,18 +86,25 @@ def land_page():
             initial_list = [];
             local_file.write(initial_list)
         
-        data = json.load(local_file)
+            data = json.load(local_file)
 
-        print(type(local_file))
-        print(data)
+            print(type(local_file))
+            print(data,'local file data stored and above its type')
+            
 
     else:
         print('new list created')
         local_file = open("profile.txt", "a")
+        data = json.load(local_file)
+        return data
 
-        initial_list = [];
-        local_file.write(initial_list)
-        print(initial_list) 
+        
+# usable alternative
+        # initial_list = [];
+        # local_file.write(initial_list)
+        # print(initial_list) 
+
+        # junk below
         # global profile_list
         # profile_list = [];
 
@@ -123,9 +131,9 @@ def land_page():
                 match landing_page:
                    
                     case 1:
-                       insert_details(local_file)
+                       insert_details(data)
                     case 2:
-                        read_file(local_file)
+                        read_file(data)
                     case 3:
                     #Exit command from application. Shutsdown
                       exit_menu()    
