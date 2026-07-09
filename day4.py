@@ -73,20 +73,22 @@ def read_file(local_file):
 def land_page():
 
     file_path = './profile.txt'
+
     print('hi')
+
     if os.path.exists(file_path):
+
         print('exist, no need for fresh array')
         local_file = open("profile.txt", "r")
+
         if not local_file:
-            local_file.append
+            initial_list = [];
+            local_file.write(initial_list)
         
         data = json.load(local_file)
 
-
         print(type(local_file))
         print(data)
-
-
 
     else:
         print('new list created')
@@ -94,16 +96,9 @@ def land_page():
 
         initial_list = [];
         local_file.write(initial_list)
-        print(initial_list)
-        
-
-
-
+        print(initial_list) 
         # global profile_list
         # profile_list = [];
-        print()
-
-
 
     while True:
         
