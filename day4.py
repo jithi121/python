@@ -15,7 +15,6 @@
 import os
 import json
 import time
-import pyinputplus
 
 
 def exit_menu():
@@ -40,25 +39,18 @@ def insert_details(data):
 
     names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group}
     data.append(names)    
-    # Json_temp_string = json.dumps(names)
     print(data)
     print('worked until here' )
 
-    # local_file.write(Json_temp_string)
-
-    # print(local_file, 'profile list')
-
     with open("profile.txt","w") as f:
         json.dump(data,f)
-    # temp_file = json.dumps(profile_list)
-    # # print(type(temp_file))
-    # 
+
 # learned about TextIOWrapper 
 # how to convert to JSON
 # how to open, read, write and append to file 
 # function calls 
 # importing JSON, converting to JSON
-#  
+# converting list to txt file and back  
 
 
 def read_file(data):
@@ -75,8 +67,6 @@ def land_page():
 
     file_path = './profile.txt'
 
-    print('hi')
-
     if os.path.exists(file_path):
 
         print('exist, no need for fresh array')
@@ -87,9 +77,7 @@ def land_page():
             local_file.write(initial_list)
         
             data = json.load(local_file)
-
-            print(type(local_file))
-            print(data,'local file data stored and above its type')
+            print('file has been loaded')
             
 
     else:
@@ -98,21 +86,9 @@ def land_page():
         data = json.load(local_file)
         return data
 
-        
-# usable alternative
-        # initial_list = [];
-        # local_file.write(initial_list)
-        # print(initial_list) 
-
-        # junk below
-        # global profile_list
-        # profile_list = [];
-
     while True:
         
-        try:
-        #Main landing page with options
-            
+        try:            
             
             landing_page = int(input("""Welcome to the Profile Creator! 
                         
@@ -122,11 +98,10 @@ def land_page():
                         2 : show all users in profile
                         3 : Exit \n\n"""))
         except ValueError:
-            print("Almost there, try a number from the menu!")
+            print("Please input correct options")
             
         else:
             if type(landing_page) is int:
-
 
                 match landing_page:
                    
@@ -135,23 +110,10 @@ def land_page():
                     case 2:
                         read_file(data)
                     case 3:
-                    #Exit command from application. Shutsdown
                       exit_menu()    
                     case _:
                         os.system('cls')
-                        print('try again, incorrect option detected. returning back in 3 secs')
-                        
-            #             i = 3
-            #             while i>0:
-
-            #                 print('returning back in ' + str(i) + ' seconds')
-            #                 i = i-1 
-            #                 # time.sleep(3)
-            #                 os.system('cls')
-            # else:
-            #     print("try numbers, perhaps!") 
-            # totally unnecessary, did to impress u
-
+                        print('Incorrect entry, please try again')
 
 land_page()
 
