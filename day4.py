@@ -14,7 +14,7 @@
 
 import os
 import json
-import time
+import datetime
 
 
 def exit_menu():
@@ -37,11 +37,12 @@ def insert_details(mem_data):
 
     fav_tool = input('Please enter your favorite tool: ')
     os.system('cls')
-
-    names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group}
+    time_stamp = datetime.datetime.now()
+    
+    names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group, 'time_stamp': time_stamp.strftime("%c") }
     mem_data.append(names)    
     print(mem_data)
-    print('worked until here' )
+    print('entry added at ', time_stamp.strftime("%c"))
 
     with open("profile.txt","w") as f:
         json.dump(mem_data,f)
