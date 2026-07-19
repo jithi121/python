@@ -70,7 +70,7 @@ def land_page():
 
     if os.path.exists(file_path):
 
-        print('exist, no need for fresh array')
+        # print('exist, no need for fresh array')
         data_base = open("profile.txt", "r")
 
         if not data_base:
