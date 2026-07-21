@@ -1,3 +1,97 @@
+# Sprint 7 - Validation
+#
+# TODO:
+#
+# 1. Validate age input
+#    - Prevent letters entering age field
+#    - Handle negative numbers
+#    - Add reasonable limits
+#
+# 2. Validate name input
+#    - Prevent empty names
+#    - Prevent invalid characters
+#
+# 3. Validate favourite tool input
+#    - Prevent blank entries
+#
+# 4. Handle incorrect user menu input
+#    - Improve user feedback
+#
+# 5. Handle invalid JSON file
+#    - Prevent application crashing
+#    - Recover gracefully
+#
+# 6. Test bad inputs deliberately
+#    - Empty strings
+#    - Wrong data types
+#    - Extreme values
+
+# Sprint 8 - Refactoring
+#
+# TODO:
+#
+# 1. Improve function names
+#
+# 2. Separate UI from data logic
+#
+# 3. Remove duplicated code
+#
+# 4. Improve file handling
+#
+# 5. Improve project structure
+#
+# 6. Add documentation
+
+# Sprint 9 - Testing
+#
+# TODO:
+#
+# 1. Create test cases
+#
+# 2. Test profile creation
+#
+# 3. Test saving data
+#
+# 4. Test loading data
+#
+# 5. Test invalid input
+#
+# 6. Test empty database
+
+
+# Sprint 10 - Features
+#
+# TODO:
+#
+# 1. Search profiles
+#
+# 2. Edit profiles
+#
+# 3. Delete profiles
+#
+# 4. Sort profiles
+#
+# 5. Export profiles
+#
+# 6. User statistics
+
+
+# Sprint 11 - Application Upgrade
+#
+# TODO:
+#
+# 1. Add API layer
+#
+# 2. Create web interface
+#
+# 3. Database integration
+#
+# 4. Authentication
+#
+# 5. Deployment
+
+
+
 # Since we're treating this like a real software project, I'd like you to use commits that fall into categories like:
 
 # feat: → New feature
