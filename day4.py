@@ -73,19 +73,26 @@ def land_page():
         # print('exist, no need for fresh array')
         data_base = open("profile.txt", "r")
 
-        if not data_base:
+        # print(type(data_base))
+        # print(data_base)
+        mem_data = json.load(data_base)
+        # print(mem_data)
+
+        if not mem_data:
             initial_list = [];
-            data_base.write(initial_list)
+            mem_data = initial_list;
+            # data_base.write(initial_list)
         
-            mem_data = json.load(data_base)
+            # mem_data = json.load(data_base)
             print('file has been loaded')
+
             
 
     else:
         print('new list created')
         data_base = open("profile.txt", "a")
-        mem_data = json.load(data_base)
-        return mem_data
+        # mem_data = json.load(data_base)
+        mem_data
 
     while True:
         
