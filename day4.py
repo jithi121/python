@@ -1,3 +1,14 @@
+# Priority	Project	Career Value
+# 1	Profile Manager	Python foundation
+# 2	ShadowTrace	SOC + cybersecurity portfolio
+# 3	File Integrity Monitor	SOC/security automation
+# 4	SOC Automation Toolkit	Entry SOC relevance
+# 5	Phonetic API	Developer/API skills
+# 6	Nugget	Flutter/mobile
+# 7	Expense Tracker	Real-world automation
+# 8	AI Word Matrix	Logic + AI
+# 9	Sequence Puzzle	Algorithms
+
 # Sprint 7 - Validation
 #
 # TODO:
@@ -151,9 +162,14 @@ def insert_details(mem_data):
 
 def read_file(mem_data):                                                                
     os.system('cls')
-    print(mem_data)
+    # print(mem_data)
     with open("profile.txt") as f:
         print(f.read())
+        print('here')
+        for x in f:
+            print('and')
+            print(f.readline())
+
                                                                                     # take care of print database
 
 def land_page():
