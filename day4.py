@@ -120,6 +120,8 @@
 import os
 import json
 import datetime
+import re
+
 
 
 def exit_menu():
@@ -127,22 +129,64 @@ def exit_menu():
     print('shutting down, till next time')
     exit()    
 
+def verification(name,age, fav_tool, pass_token):
+    name_pattern = r'^[A-Za-z]+$'
+    age_pattern = r''
+    tool_pattern = r'^[A-Za-z0-9 ]{1,15}$'
+
+    print('B')
+
+
+    if re.fullmatch(name_pattern, name):
+        print('check 1')
+        if re.fullmatch(tool_pattern, fav_tool):
+            print('check 2')
+            if 0 <= age <=100:
+                    print('check 3')
+                    pass_token = 1;
+                    return name,age, fav_tool, pass_token
+
+
+
+
+
+
 def insert_details(mem_data):
+
+
+    pass_token  = 0
+    age = 0
+    name = ''
+    fav_tool = ''
+
+    
+    while pass_token == 0:
+         
                                                                                     # takes care of insert operations  
-    name = input('Please enter your name: ')
-    os.system('cls')
+        name = input('Please enter your name: ')
+        os.system('cls')
 
-    age = int(input('Please enter your age: '))
-    os.system('cls')
+        age = int(input('Please enter your age: '))
+        os.system('cls')
+        fav_tool = input('Please enter your favorite tool: ')
+        os.system('cls')
+        verification(name,age, fav_tool, pass_token)
 
+
+
+
+
+    print('BCD')
+
+    
     if age<18:
         age_group = 'minor'
     else:
         age_group = 'adult'
 
-    fav_tool = input('Please enter your favorite tool: ')
-    os.system('cls')
     time_stamp = datetime.datetime.now()
+
+    age_verification(name,age, fav_tool, pass_token)
     
     names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group, 'time_stamp': time_stamp.strftime("%c") }
     mem_data.append(names)    
@@ -162,13 +206,26 @@ def insert_details(mem_data):
 
 def read_file(mem_data):                                                                
     os.system('cls')
-    # print(mem_data)
-    with open("profile.txt") as f:
-        print(f.read())
-        print('here')
-        for x in f:
-            print('and')
-            print(f.readline())
+    # print(type(mem_data))
+
+    for profile in mem_data:
+        print(f''' 
+        ____________________________________________
+        
+        Name: {profile['name']}
+        Age: {profile['age']}
+        Fav tool: {profile['fav_tool']}
+        Age group:{profile['age_group']}
+        Time Stamp: {profile['time_stamp']}
+        ____________________________________________
+        ''')
+
+    # with open("profile.txt") as f:
+    #     print(f.read())
+    #     print('here')
+    #     for x in f:
+    #         print('and')
+    #         print(f.readline())
 
                                                                                     # take care of print database
 
