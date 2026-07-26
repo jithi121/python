@@ -130,21 +130,28 @@ def exit_menu():
     exit()    
 
 def verification(name,age, fav_tool, pass_token):
-    name_pattern = r'^[A-Za-z]+$'
-    age_pattern = r''
+    name_pattern = r'^[A-Za-z]{1,15}$'   
     tool_pattern = r'^[A-Za-z0-9 ]{1,15}$'
-
-    print('B')
 
 
     if re.fullmatch(name_pattern, name):
-        print('check 1')
         if re.fullmatch(tool_pattern, fav_tool):
-            print('check 2')
             if 0 <= age <=100:
-                    print('check 3')
                     pass_token = 1;
+                    print(pass_token)
                     return name,age, fav_tool, pass_token
+            else:
+                print("Please add a valid age")
+                return 0
+        else: 
+            print("Please add a valid tool name")     
+            return 0
+
+    else:
+        print("Please add a valid name")
+        return 0
+        
+
 
 
 
@@ -159,7 +166,7 @@ def insert_details(mem_data):
     name = ''
     fav_tool = ''
 
-    
+
     while pass_token == 0:
          
                                                                                     # takes care of insert operations  
@@ -170,13 +177,12 @@ def insert_details(mem_data):
         os.system('cls')
         fav_tool = input('Please enter your favorite tool: ')
         os.system('cls')
-        verification(name,age, fav_tool, pass_token)
+        result = verification(name,age, fav_tool, pass_token)
 
+        print(result)
 
-
-
-
-    print('BCD')
+        if result: 
+            name, age, fav_tool, pass_token = result
 
     
     if age<18:
@@ -186,11 +192,10 @@ def insert_details(mem_data):
 
     time_stamp = datetime.datetime.now()
 
-    age_verification(name,age, fav_tool, pass_token)
+    # verification(name,age, fav_tool, pass_token)
     
     names = {'name':name, 'age':age, 'fav_tool':fav_tool, 'age_group':age_group, 'time_stamp': time_stamp.strftime("%c") }
     mem_data.append(names)    
-    print(mem_data)
     print('entry added at ', time_stamp.strftime("%c"))
 
     with open("profile.txt","w") as f:
@@ -206,7 +211,6 @@ def insert_details(mem_data):
 
 def read_file(mem_data):                                                                
     os.system('cls')
-    # print(type(mem_data))
 
     for profile in mem_data:
         print(f''' 
@@ -237,20 +241,14 @@ def land_page():
 
     if os.path.exists(file_path):
 
-        # print('exist, no need for fresh array')
         data_base = open("profile.txt", "r")
 
-        # print(type(data_base))
-        # print(data_base)
         mem_data = json.load(data_base)
-        # print(mem_data)
 
         if not mem_data:
             initial_list = [];
             mem_data = initial_list;
-            # data_base.write(initial_list)
         
-            # mem_data = json.load(data_base)
             print('file has been loaded')
 
             
@@ -258,7 +256,6 @@ def land_page():
     else:
         print('new list created')
         data_base = open("profile.txt", "a")
-        # mem_data = json.load(data_base)
         mem_data
 
     while True:
